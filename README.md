@@ -26,7 +26,7 @@ To run the application, navigate to the project directory and execute the follow
 ```python
 streamlit run app.py
 ```
-
+Executing app.py should open the application in your default web browser. 
 ## Features
 
 - **Data Loading:** Ability to load and process data from various sources.
