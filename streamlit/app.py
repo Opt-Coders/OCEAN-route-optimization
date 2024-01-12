@@ -89,6 +89,9 @@ if st.button("Create distance matrix"):
 
         data = json.dumps(data_model)
 
+        st.write("Data NFT")
+        st.write("Encrypting data, uploading data directly and transfering dataset using Ocean Protocol...")
+
         # Encrypt data with Bob's public key and transfer to Bob
         tx, data_nft = encrypt_and_transfer_data(
             data=data,
@@ -97,14 +100,12 @@ if st.button("Create distance matrix"):
             recipient_asymmetric_public_key=bobs_asymmetric_public_key,
         )
 
-        st.write("Data NFT")
+        st.write("Transaction NFT") 
         st.write(data_nft)
-  
         tx_hash = tx.transactionHash.hex()
         tx_link = "https://mumbai.polygonscan.com/tx/" + tx_hash
         st.write(f"Transaction hash: {tx_hash}")        
         st.write(tx_link)
-        st.write(st.session_state["data_nft"])
 
         st.session_state["data_nft"] = data_nft 
         st.session_state["tx_address"] = tx
