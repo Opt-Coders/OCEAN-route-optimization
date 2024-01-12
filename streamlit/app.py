@@ -97,21 +97,20 @@ if st.button("Create distance matrix"):
             recipient_asymmetric_public_key=bobs_asymmetric_public_key,
         )
 
-        st.write("data_nft")
+        st.write("Data NFT")
         st.write(data_nft)
-        st.session_state["data_nft"] = data_nft
+  
+        tx_hash = tx.transactionHash.hex()
+        tx_link = "https://mumbai.polygonscan.com/tx/" + tx_hash
+        st.write(f"Transaction hash: {tx_hash}")        
+        st.write(tx_link)
+        st.write(st.session_state["data_nft"])
 
-        st.write(f"Transation {tx}")
+        st.session_state["data_nft"] = data_nft 
         st.session_state["tx_address"] = tx
-
 
 if st.session_state["tx_address"] is not None:
     st.subheader("3. Optimized Routes")
-    tx_hash = st.session_state["tx_address"].transactionHash.hex()
-    st.write(f"Transaction hash: {tx_hash}")
-    tx_link = "https://mumbai.polygonscan.com/tx/" + tx_hash
-    st.write(tx_link)
-    st.write(st.session_state["data_nft"])
 
     if st.button("Consume data & optimize"):
         decrypted_data = decrypt_data_from_chain(
