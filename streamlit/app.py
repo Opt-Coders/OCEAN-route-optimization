@@ -1,7 +1,6 @@
 import json
 
 import pandas as pd
-import yaml
 from eth_account.account import Account
 
 import streamlit as st
@@ -33,12 +32,12 @@ with open("secrets.yaml", "r") as file:
     credentials = yaml.safe_load(file)
 
 
-azure_primary_key = credentials["azure_instance_maps"]["primary_key"]
-alice_acc = Account.from_key(credentials["wallet"]["alice_private_key"])
-bob_acc = Account.from_key(credentials["wallet"]["bob_private_key"])
-bobs_asymmetric_public_key = credentials["user_asymmetric_keys"]["bobs_asymmetric_public_key"]
-bobs_asymmetric_private_key = credentials["user_asymmetric_keys"]["bobs_asymmetric_private_key"]
-mapbox_pk = credentials["mapbox"]["private_key"]
+azure_primary_key = st.secrets["azure_instance_maps"]["primary_key"]
+alice_acc = Account.from_key(st.secrets["wallet"]["alice_private_key"])
+bob_acc = Account.from_key(st.secrets["wallet"]["bob_private_key"])
+bobs_asymmetric_public_key = st.secrets["user_asymmetric_keys"]["bobs_asymmetric_public_key"]
+bobs_asymmetric_private_key = st.secrets["user_asymmetric_keys"]["bobs_asymmetric_private_key"]
+mapbox_pk = st.secrets["mapbox"]["private_key"]
 
 
 # Sidebar
