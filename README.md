@@ -6,8 +6,10 @@ This Route Optimization Application is a Streamlit-based web tool designed to ef
 ## Getting Started
 ### Prerequisites
 - Python 3.8+
-- Streamlit
-- OCEAN.py
+- [OCEAN.py](https://github.com/oceanprotocol/ocean.py)
+- [OR Tools](https://github.com/google/or-tools)
+- [Streamlit](https://streamlit.io/)
+- [Plotly](https://plotly.com/python/)
 
 ## Installation
 1. Clone the repository to your local machine.
@@ -22,11 +24,12 @@ This Route Optimization Application is a Streamlit-based web tool designed to ef
 
 ## Running the Application
 
-To run the application, navigate to the project directory and execute the following command in the terminal:
+To run the application, navigate to the streamlit directory and execute the following command in the terminal:
 ```python
 streamlit run app.py
 ```
 This will open the application in your default web browser. 
+
 ## Features
 
 - **Data Loading:** Ability to load and process data from various sources.
