@@ -1,4 +1,5 @@
 import json
+import os
 
 import pandas as pd
 import plotly.graph_objects as go
@@ -13,18 +14,26 @@ from ortools.constraint_solver import pywrapcp, routing_enums_pb2
 
 
 def load_data(number_of_orders: int, number_of_vehicles: int, number_of_depots: int):
+    
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    
+    orders_data_path = os.path.join(dir_path, "orders_lmd.csv")
+    vehicles_data_path = os.path.join(dir_path, "vehicles_lmd.csv")
+    depots_data_path = os.path.join(dir_path, "depots_lmd.csv")
+
     orders_df = pd.read_csv(
-        "orders_lmd.csv", usecols=["Latitude", "Longitude", "Name", "Demand"], nrows=number_of_orders
+        orders_data_path, usecols=["Latitude", "Longitude", "Name", "Demand"], nrows=number_of_orders
     )
     orders_df["Demand"] = orders_df["Demand"].round(0).astype(int)
 
     vehicles_df = pd.read_csv(
-        "vehicles_lmd.csv",
+        vehicles_data_path,
         usecols=["vehicle_id", "vehicle_type", "assigned_depot", "vehicle_capacity"],
         nrows=number_of_vehicles,
-    )
-
-    depots_df = pd.read_csv("depots_lmd.csv", usecols=["Latitude", "Longitude", "Name"], nrows=number_of_depots)
+    )    
+    
+    depots_df = pd.read_csv(depots_data_path, usecols=["Latitude", "Longitude", "Name"], nrows=number_of_depots)
+    
 
     return orders_df, vehicles_df, depots_df
 
