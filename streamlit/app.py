@@ -28,8 +28,6 @@ if "encrypted_data" not in st.session_state:
 if "tx_address" not in st.session_state:
     st.session_state["tx_address"] = None
 
-with open("secrets.yaml", "r") as file:
-    credentials = yaml.safe_load(file)
 
 
 azure_primary_key = st.secrets["azure_instance_maps"]["primary_key"]
